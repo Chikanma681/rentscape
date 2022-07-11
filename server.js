@@ -11,9 +11,11 @@ const Filestore = require("session-file-store")(session);
 const MongoDBSession = require("connect-mongodb-session")(session); // alternative store
 // we use bodyparser in the routes folder
 
+
 app.use(morgan("dev"));
 const db = require("./config/keys").mongoURI;
 app.use(cookieParser());
+
 //Connect to MongoDB
 const corsOptions = {
   origin: "http://localhost:3000",
@@ -66,6 +68,7 @@ const isAuth = (req, res, next) => {
 app.use("/users", userRouter);
 app.use(isAuth); /*new idea: everyone can view the apartments 
 but you have to sign in to upload*/
+// app.use(express.urlencoded());
 app.use("/", apartmentsRouter);
 
 const port = process.env.PORT || 5000;

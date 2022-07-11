@@ -10,7 +10,7 @@ import {
   Alert,
   UncontrolledAlert,
 } from "reactstrap";
-import { ImgurClient } from "imgur";
+// import { ImgurClient } from "imgur";
 import { useSelector, useDispatch } from "react-redux";
 import { addItem } from "../redux/actions/apartmentAction";
 import { useHistory } from "react-router-dom";
@@ -27,54 +27,33 @@ const PostComponent = () => {
   const [link, setLink] = useState("");
   const fileSelectedHandler = (e) => {
     setImage(e.target.files[0]);
-    // console.log(e.target.files[0]);
+    console.log(e.target.files[0]);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(image);
-    const fd = new FormData();
-    fd.append("image", image);
+  var b = image;
+  console.log(b)
+  console.log([b])   
+    // const fd = new FormData();
+    // fd.append("image", image);
 
-    const client = new ImgurClient({ clientId: "f2208de2f2eaa73" }).then(
-      (res) => console.log(res)
-    );
-    console.log(client);
-    // fetch("https://api.imgur.com/3/image/", {
-    //   method: "post",
-    //   headers: {
-    //     Authorization: "Client-ID f2208de2f2eaa73",
-    //   },
-    //   body: fd,
-    // }).then((data) => {
-    //   setLink(data.data.link);
-    //   console.log(link);
-    // });
-    // fetch("https://api.imgur.com/3/image", {
-    //   method: "post",
-    //   headers: {
-    //     Authorization: "Client-ID 6db47bd7029562d",
-    //     Accept: "application/json",
-    //   },
-    //   body: fd,
-    // }).then((data) => data.json());
+    const apartment = {
+      address: e.target[0].value,
+      bedrooms: e.target[1].value,
+      rentPrice: e.target[2].value,
+      image:image
+    };
+    console.log(apartment);
 
-    // const apartment = {
-    //   address: e.target[0].value,
-    //   bedrooms: e.target[1].value,
-    //   rentPrice: e.target[2].value,
-    //   image: link,
-    // };
-    // console.log(image);
-
-    // dispatch(addItem(apartment))
-    //   .then(() => {
-    //     return navigate("/");
-    //   })
-    //   .catch((err) => {
-    //     setError(!error);
-    //     console.log(err);
-    //   });
+    dispatch(addItem(apartment))
+      .then(() => {
+        return navigate("/");
+      })
+      .catch((err) => {
+        setError(!error);
+        console.log(err);
+      });
   };
 
   return (
@@ -84,7 +63,11 @@ const PostComponent = () => {
           <h6>Post Apartment</h6>
         </div>
         <h6>
-          <Form className="col-8 mx-auto" onSubmit={handleSubmit}>
+          <Form
+            className="col-8 mx-auto"
+            onSubmit={handleSubmit}
+            encType="multipart/form-data"
+          >
             <FormGroup>
               <Label type="text">Address</Label>
               <Input placeholder="Address" required />
@@ -103,7 +86,7 @@ const PostComponent = () => {
               <Input
                 className="file"
                 type="file"
-                name="sampleFile"
+                name="image"
                 onChange={fileSelectedHandler}
               />
             </FormGroup>

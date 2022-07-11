@@ -1,16 +1,35 @@
 const express = require("express");
+const app = express()
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 // const imgur = require("imgur");
+const path = require("path");
+const multer = require("multer");
 const fs = require("fs");
 // const fileUpload = require("express-fileupload");
 const apartments = require("../models/apartment");
 
+app.use(express.urlencoded());
+//storage
+const storage = multer.diskStorage({
+  destination: function (req, file, callback) {
+    callback(null, "./public/uploads/image");
+  },
+  filename: function (req, file, callback) {
+    callback(null, file.fieldname + "-" + Date.now());
+  },
+});
+
+const upload = multer({
+  storage: storage,
+});
+
 const apartRouter = express.Router();
-apartRouter.use(bodyParser.json());
+apartRouter.use(express.urlencoded());
+apartRouter.use(express.json());
 
 apartRouter
-  .route("/")
+  .route("/", )
   .get((req, res, next) => {
     apartments
       .find({})
@@ -25,15 +44,24 @@ apartRouter
       )
       .catch((err) => console.log(err));
   })
-  .post((req, res, next) => {
+  .post(upload.single("image"),(req, res, next) => {
     // console.log(req)
     req.body.landlord = req.session.userId;
-     
-    if (!req.files){
-      console.log(' no fIle exists')
-    }
+
+    console.log(req.body);
+    var obj = {
+      address: req.body.address,
+      bedrooms: req.body.bedrooms,
+      rentPrice: req.body.rentPrice,
+      image: {
+        data: fs.readFileSync(
+          path.join("../public/uploads/images/" + req.files)
+        ),
+        contentType: "image/png",
+      },
+    };
     apartments
-      .create(req.body)
+      .create(obj)
       .then((apartment) => {
         console.log("apartment posted", apartment);
         res.statusCode = 200;
