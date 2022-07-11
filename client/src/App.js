@@ -1,24 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+import Login from "./components/Login";
+import Signup from "./components/Signup";
+import HomePage from "./components/Homepage";
+import Header from "./components/Header";
+import { Provider } from "react-redux";
+import store from "./redux/store";
+import ProtectedRoutes from "./util/ProtectedRoute";
+import { Routes, Route, Navigate } from "react-router-dom";
+import PostComponent from "./components/PostComponent";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Provider store={store}>
+      <Header />
+      <div className="App mt-3 ">
+        <Routes>
+          <Route exact path="/login" element={<Login />} />
+          <Route exact path="/signup" element={<Signup />} />
+          <Route path="/post" element={<PostComponent />} />
+          <Route element={<ProtectedRoutes />}>
+            <Route path="/" element={<HomePage />} />
+          </Route>
+          <Route path="*" element={<Navigate to="/login" replace />} />
+        </Routes>
+      </div>
+    </Provider>
   );
 }
 
