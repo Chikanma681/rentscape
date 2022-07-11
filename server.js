@@ -53,8 +53,8 @@ const isAuth = (req, res, next) => {
   if (req.session.isAuth) {
     // res.redirect("http://www.localhost:3000/"
     // console.log("Login required");
-    console.log(res);
-    console.log(req);
+    // console.log(res);
+    // console.log(req);
     next();
   } else {
     // console.log(res)

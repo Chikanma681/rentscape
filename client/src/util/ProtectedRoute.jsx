@@ -9,6 +9,7 @@ export const useAuth = () => {
 
 const ProtectedRoutes = () => {
   const isAuth = useAuth();
+  console.log(isAuth)
   return isAuth ? <Outlet /> : <Navigate to="/login" />;
 };
 

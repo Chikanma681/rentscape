@@ -1,7 +1,9 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
-
+// const imgur = require("imgur");
+const fs = require("fs");
+// const fileUpload = require("express-fileupload");
 const apartments = require("../models/apartment");
 
 const apartRouter = express.Router();
@@ -25,7 +27,11 @@ apartRouter
   })
   .post((req, res, next) => {
     // console.log(req)
-    req.body.landlord = req.session.userId
+    req.body.landlord = req.session.userId;
+     
+    if (!req.files){
+      console.log(' no fIle exists')
+    }
     apartments
       .create(req.body)
       .then((apartment) => {

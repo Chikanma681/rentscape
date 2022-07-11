@@ -24,29 +24,29 @@ const Header = () => {
 
   return (
     <Navbar color="success" dark expand="sm">
-        <NavbarBrand href="/">
-          <h6>RentScape</h6>
-        </NavbarBrand>
-        <NavbarToggler onClick={handleToggle}  />
-        <Collapse isOpen={toggle} navbar>
-          <Nav navbar className="ms-auto mb-lg-0">
-            <NavItem>
-              <NavLink href="/">Home</NavLink>
-            </NavItem>
-            {isAuth ? (
-              <React.Fragment>
-                <NavItem>
-                  <NavLink href="#">Logout</NavLink>
-                </NavItem>
-                <NavItem>
-                  <NavLink href="#">Post Apartment</NavLink>
-                </NavItem>
-              </React.Fragment>
-            ) : (
-              ""
-            )}
-          </Nav>
-        </Collapse>
+      <NavbarBrand href="/">
+        <h6>RentScape</h6>
+      </NavbarBrand>
+      <NavbarToggler onClick={handleToggle} />
+      <Collapse isOpen={toggle} navbar>
+        <Nav navbar className="ms-auto mb-lg-0">
+          <NavItem>
+            <NavLink href="/">Home</NavLink>
+          </NavItem>
+          {isAuth ? (
+            <React.Fragment>
+              <NavItem>
+                <NavLink href="#">Logout</NavLink>
+              </NavItem>
+              <NavItem>
+                <NavLink href="/post">Post Apartment</NavLink>
+              </NavItem>
+            </React.Fragment>
+          ) : (
+            ""
+          )}
+        </Nav>
+      </Collapse>
     </Navbar>
   );
 };

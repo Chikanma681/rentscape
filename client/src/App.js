@@ -6,6 +6,7 @@ import { Provider } from "react-redux";
 import store from "./redux/store";
 import ProtectedRoutes from "./util/ProtectedRoute";
 import { Routes, Route, Navigate } from "react-router-dom";
+import PostComponent from "./components/PostComponent";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Routes>
           <Route exact path="/login" element={<Login />} />
           <Route exact path="/signup" element={<Signup />} />
+          <Route path="/post" element={<PostComponent />} />
           <Route element={<ProtectedRoutes />}>
             <Route path="/" element={<HomePage />} />
           </Route>

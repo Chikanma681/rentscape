@@ -2,12 +2,13 @@ import React, { useEffect } from "react";
 import { Form, FormGroup, Navbar, Input, Label, Button } from "reactstrap";
 import { useSelector, useDispatch } from "react-redux";
 import { signup } from "../redux/actions/session";
-
-
+import { useNavigate } from "react-router-dom";
+import {Link} from "react-router-dom"
 const Signup = () => {
   const errors = useSelector((state) => state.error);
   const session = useSelector((state) => state.session);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -19,7 +20,7 @@ const Signup = () => {
     dispatch(signup(user))
       .then(() => {
         console.log("Signup Successful");
-
+        return navigate("/login");
       })
       .catch((err) => console.log(err));
   };
@@ -47,6 +48,9 @@ const Signup = () => {
             <Input type="submit" value="Submit" />
           </Form>
         </h6>
+      </div>
+      <div className="badge badge-success mx-auto">
+        <Link to="/login">Login</Link>
       </div>
     </div>
   );

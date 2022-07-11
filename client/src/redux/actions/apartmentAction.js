@@ -3,11 +3,12 @@ import axios from "axios";
 const { GET_ITEM, ADD_ITEM, DELETE_ITEM } = ApartmentTypes;
 
 axios.defaults.baseURL = "http://localhost:5000/";
+axios.defaults.withCredentials = true;
 
 export const getItem = async (dispatch) => {
   const response = await axios.get("/");
 
-  if (response.status===200) {
+  if (response.status === 200) {
     return dispatch({
       type: GET_ITEM,
       payload: response.data,

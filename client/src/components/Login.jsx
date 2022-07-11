@@ -1,9 +1,19 @@
 import React, { useEffect } from "react";
-import { Form, FormGroup, Navbar, Input, Label, Button } from "reactstrap";
+import {
+  Form,
+  FormGroup,
+  Navbar,
+  Input,
+  Label,
+  Button,
+  Alert,
+  UncontrolledAlert,
+} from "reactstrap";
 import { useSelector, useDispatch } from "react-redux";
 import { login } from "../redux/actions/session";
 import { useHistory } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
+import { useState } from "react";
 
 const Login = () => {
   const errors = useSelector((state) => state.error);
@@ -11,6 +21,7 @@ const Login = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   // const history = useHistory();
+  const [error, setError] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -21,9 +32,13 @@ const Login = () => {
     dispatch(login(user))
       .then(() => {
         console.log("Login successful");
+
         return navigate("/");
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        setError(!error);
+        console.log(err);
+      });
 
     // history.push("/")
   };
@@ -34,6 +49,13 @@ const Login = () => {
         <div className="mx-auto">
           <h6>Login</h6>
         </div>
+        <UncontrolledAlert
+          color="danger"
+          isOpen={error}
+          className="col-8 mx-auto"
+        >
+          Incorrect Email or Password
+        </UncontrolledAlert>
         <h6>
           <Form className="col-8 mx-auto" onSubmit={handleSubmit}>
             <FormGroup>
@@ -47,6 +69,10 @@ const Login = () => {
             <Input type="submit" value="Submit" />
           </Form>
         </h6>
+      </div>
+
+      <div className="badge badge-success mx-auto">
+        <Link to="/signup">Sign Up</Link>
       </div>
     </div>
   );
