@@ -72,7 +72,7 @@ const HomePage = () => {
             {apartments.map((apartment) => {
               return (
                 // <div key={apartment._id} className="mb-3">
-                  <Col md={4} className="mb-3">
+                  <Col md={4} className="mb-3" key={apartment._id}>
                     <Card outline id="Popover1" onClick={toggle}>
                       <CardImg
                         top
