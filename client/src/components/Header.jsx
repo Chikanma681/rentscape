@@ -36,10 +36,10 @@ const Header = () => {
           {isAuth ? (
             <React.Fragment>
               <NavItem>
-                <NavLink href="#">Logout</NavLink>
+                <NavLink href="/post">Post Apartment</NavLink>
               </NavItem>
               <NavItem>
-                <NavLink href="/post">Post Apartment</NavLink>
+                <NavLink href="#">Logout</NavLink>
               </NavItem>
             </React.Fragment>
           ) : (
