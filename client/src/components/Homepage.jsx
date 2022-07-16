@@ -4,9 +4,9 @@ import { useState } from "react";
 
 import {
   getItem,
-  getItemId,
-  addItem,
-  deleteItem,
+  // getItemId,
+  // addItem,
+  // deleteItem,
 } from "../redux/actions/apartmentAction";
 import { useSelector, useDispatch } from "react-redux";
 import {
@@ -71,8 +71,8 @@ const HomePage = () => {
           <Row>
             {apartments.map((apartment) => {
               return (
-                <div key={apartment._id} className="mb-3">
-                  <Col md={3}>
+                // <div key={apartment._id} className="mb-3">
+                  <Col md={4} className="mb-3">
                     <Card outline id="Popover1" onClick={toggle}>
                       <CardImg
                         top
@@ -110,7 +110,7 @@ const HomePage = () => {
                       </Modal>
                     </Card>
                   </Col>
-                </div>
+                // </div>
               );
             })}
           </Row>
@@ -121,12 +121,3 @@ const HomePage = () => {
 };
 
 export default HomePage;
-
-// let see how we gonna tackle this problem
-
-/*
-- first we need the user to signup and login
--  we will carry this information  in the request body'
-- then we need a way to display the tentant information as a card
-- then finally we need a way for landlord to post information
-*/
