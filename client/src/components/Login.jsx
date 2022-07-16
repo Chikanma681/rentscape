@@ -30,20 +30,17 @@ const Login = () => {
       password: e.target[1].value,
     };
 
-  
     const p = dispatch(login(user))
       .then(() => {
         console.log("Login successful");
-
         return navigate("/");
       })
       .catch((err) => {
         setError(!error);
         console.log(err);
       });
-    console.log(p)
-    return p
-    // history.push("/")
+    console.log(p);
+    return p;
   };
 
   return (

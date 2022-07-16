@@ -32,11 +32,15 @@ export const login = (user) =>
   // });
 
 
-export const logout = (user) =>
-  fetch("users/logout", {
-    method: "POST",
-    body: JSON.stringify(user),
-    headers: {
-      "Content-Type": "application/json",
-    },
+export const logout = () =>
+
+  axios({
+    method: "post",
+    url: "/users/logout",
   });
+  // fetch("users/logout", {
+  //   method: "POST",
+  //   body: JSON.stringify(user),
+  //   headers: {
+  //     "Content-Type": "application/json",
+  //   },

@@ -1,9 +1,10 @@
 import Login from "./components/Login";
 import Signup from "./components/Signup";
+import Logout from "./components/Logout";
 import HomePage from "./components/Homepage";
 import Header from "./components/Header";
 import { Provider } from "react-redux";
-import store, {Persistor} from "./redux/store";
+import store, { Persistor } from "./redux/store";
 import ProtectedRoutes from "./util/ProtectedRoute";
 import { Routes, Route, Navigate } from "react-router-dom";
 import PostComponent from "./components/PostComponent";
@@ -21,6 +22,7 @@ function App() {
             <Route element={<ProtectedRoutes />}>
               <Route path="/" element={<HomePage />} />
               <Route path="/post" element={<PostComponent />} />
+              <Route exact path="/logout" element={<Logout />} />
             </Route>
             <Route path="*" element={<Navigate to="/login" replace />} />
           </Routes>
