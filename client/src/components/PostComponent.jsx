@@ -33,6 +33,7 @@ const PostComponent = () => {
       address: e.target[0].value,
       bedrooms: e.target[1].value,
       rentPrice: e.target[2].value,
+      email: e.target[3].value,
       image: data.secure_url,
     };
 
@@ -70,6 +71,10 @@ const PostComponent = () => {
             <FormGroup>
               <Label type="text">Rent Price</Label>
               <Input placeholder="Rent Price" required />
+            </FormGroup>
+            <FormGroup>
+              <Label type="text">Contact email</Label>
+              <Input placeholder="Contact email" required />
             </FormGroup>
             <FormGroup>
               <Label type="text">Upload Image</Label>

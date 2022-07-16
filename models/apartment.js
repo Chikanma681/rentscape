@@ -18,6 +18,10 @@ const apartmentSchema = new Schema({
     type: String,
     required: true,
   },
+  email: {
+    type: String,
+    required: true,
+  },
   landlord: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "User",
