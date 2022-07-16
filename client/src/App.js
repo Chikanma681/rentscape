@@ -16,9 +16,9 @@ function App() {
         <Routes>
           <Route exact path="/login" element={<Login />} />
           <Route exact path="/signup" element={<Signup />} />
-          <Route path="/post" element={<PostComponent />} />
           <Route element={<ProtectedRoutes />}>
             <Route path="/" element={<HomePage />} />
+            <Route path="/post" element={<PostComponent />} />
           </Route>
           <Route path="*" element={<Navigate to="/login" replace />} />
         </Routes>
