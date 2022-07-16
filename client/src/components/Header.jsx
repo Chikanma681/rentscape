@@ -39,7 +39,7 @@ const Header = () => {
                 <NavLink href="/post">Post Apartment</NavLink>
               </NavItem>
               <NavItem>
-                <NavLink href="#">Logout</NavLink>
+                <NavLink href="/logout">Logout</NavLink>
               </NavItem>
             </React.Fragment>
           ) : (
