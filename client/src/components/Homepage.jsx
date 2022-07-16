@@ -40,14 +40,13 @@ const HomePage = () => {
     handleFilter();
   };
   const handleFilter = () => {
-    // console.log(apartments)
     const results = apartments.filter((apartment) =>
       apartment.address.toLowerCase().includes(filtered.toLowerCase())
     );
     console.log(results);
     setOutput(results);
   };
-  // console.log(output)
+
   if (filtered === "") {
     return (
       <div>
