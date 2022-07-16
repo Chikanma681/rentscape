@@ -1,5 +1,5 @@
 const express = require("express");
-const app = express()
+const app = express();
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 // const imgur = require("imgur");
@@ -16,7 +16,7 @@ const apartRouter = express.Router();
 apartRouter.use(express.json());
 
 apartRouter
-  .route("/", )
+  .route("/")
   .get((req, res, next) => {
     apartments
       .find({})
@@ -40,7 +40,8 @@ apartRouter
       address: req.body.address,
       bedrooms: req.body.bedrooms,
       rentPrice: req.body.rentPrice,
-      image: req.body.image
+      email: req.body.email,
+      image: req.body.image,
     };
     apartments
       .create(obj)
