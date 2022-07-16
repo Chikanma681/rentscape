@@ -29,7 +29,9 @@ const Login = () => {
       email: e.target[0].value,
       password: e.target[1].value,
     };
-    dispatch(login(user))
+
+  
+    const p = dispatch(login(user))
       .then(() => {
         console.log("Login successful");
 
@@ -39,7 +41,8 @@ const Login = () => {
         setError(!error);
         console.log(err);
       });
-
+    console.log(p)
+    return p
     // history.push("/")
   };
 

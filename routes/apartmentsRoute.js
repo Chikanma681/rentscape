@@ -9,23 +9,10 @@ const fs = require("fs");
 // const fileUpload = require("express-fileupload");
 const apartments = require("../models/apartment");
 
-app.use(express.urlencoded());
-//storage
-const storage = multer.diskStorage({
-  destination: function (req, file, callback) {
-    callback(null, "./public/uploads/image");
-  },
-  filename: function (req, file, callback) {
-    callback(null, file.fieldname + "-" + Date.now());
-  },
-});
-
-const upload = multer({
-  storage: storage,
-});
+// app.use(express.urlencoded());
 
 const apartRouter = express.Router();
-apartRouter.use(express.urlencoded());
+// apartRouter.use(express.urlencoded());
 apartRouter.use(express.json());
 
 apartRouter
@@ -44,21 +31,16 @@ apartRouter
       )
       .catch((err) => console.log(err));
   })
-  .post(upload.single("image"),(req, res, next) => {
+  .post((req, res, next) => {
     // console.log(req)
     req.body.landlord = req.session.userId;
 
-    console.log(req.body);
+    // console.log(req.body);
     var obj = {
       address: req.body.address,
       bedrooms: req.body.bedrooms,
       rentPrice: req.body.rentPrice,
-      image: {
-        data: fs.readFileSync(
-          path.join("../public/uploads/images/" + req.files)
-        ),
-        contentType: "image/png",
-      },
+      image: req.body.image
     };
     apartments
       .create(obj)

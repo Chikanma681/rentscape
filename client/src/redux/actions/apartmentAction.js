@@ -30,8 +30,8 @@ export const getItemId = (id) => (dispatch) => {
     .catch((err) => console.log(err));
 };
 
-export const addItem = (data) => (dispatch) => {
-  axios
+export const addItem = (data) => async (dispatch) => {
+  const response = await axios
     .post("/", data)
     .then((res) =>
       dispatch({
@@ -40,6 +40,7 @@ export const addItem = (data) => (dispatch) => {
       })
     )
     .catch((err) => console.log(err));
+  return response;
 };
 
 export const deleteItem = (id) => (dispatch) => {

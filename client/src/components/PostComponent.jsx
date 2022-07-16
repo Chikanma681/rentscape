@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import axios from "axios";
+import Axios from "axios";
 import {
   Form,
   FormGroup,
@@ -16,6 +16,7 @@ import { addItem } from "../redux/actions/apartmentAction";
 import { useHistory } from "react-router-dom";
 import { useNavigate, Link } from "react-router-dom";
 import { useState } from "react";
+import { Image } from "cloudinary-react";
 
 const PostComponent = () => {
   // const errors = useSelector((state) => state.error);
@@ -30,23 +31,36 @@ const PostComponent = () => {
     console.log(e.target.files[0]);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-  var b = image;
-  console.log(b)
-  console.log([b])   
-    // const fd = new FormData();
-    // fd.append("image", image);
 
+    const url = "https://api.cloudinary.com/v1_1/chikanma681/upload";
+
+    const formData = new FormData();
+    formData.append("file", image);
+    formData.append("upload_preset", "someRandomName");
+
+    const data = await fetch(
+      "https://api.cloudinary.com/v1_1/chikanma681/image/upload",
+      {
+        method: "POST",
+        body: formData,
+      }
+    ).then((r) => r.json());
+
+    // console.log(data);
+    // console.log(data.secure_url)
+
+    // console.log(imageUrl)
     const apartment = {
       address: e.target[0].value,
       bedrooms: e.target[1].value,
       rentPrice: e.target[2].value,
-      image:image
+      image: data.secure_url,
     };
-    console.log(apartment);
+    // console.log(apartment);
 
-    dispatch(addItem(apartment))
+    const p = dispatch(addItem(apartment))
       .then(() => {
         return navigate("/");
       })
@@ -54,6 +68,8 @@ const PostComponent = () => {
         setError(!error);
         console.log(err);
       });
+    // console.log(p)
+    return p;
   };
 
   return (
@@ -87,6 +103,7 @@ const PostComponent = () => {
                 className="file"
                 type="file"
                 name="image"
+                accept="image/*"
                 onChange={fileSelectedHandler}
               />
             </FormGroup>

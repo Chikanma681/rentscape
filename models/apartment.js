@@ -3,8 +3,8 @@ const Schema = mongoose.Schema;
 
 const apartmentSchema = new Schema({
   image: {
-    data: Buffer,
-    contentType: String,
+    type: String,
+    required: true,
   },
   address: {
     type: String,
