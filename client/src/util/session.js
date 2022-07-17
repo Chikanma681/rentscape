@@ -2,7 +2,7 @@ import axios from "axios";
 axios.defaults.withCredentials = true
 
 export const signup = (user) =>
-  fetch("users/signup", {
+  fetch("api/users/signup", {
     method: "POST",
     body: JSON.stringify(user),
     headers: {
@@ -13,7 +13,7 @@ export const signup = (user) =>
 export const login = (user) =>
   axios({
     method: "post",
-    url: "/users/login",
+    url: "api/users/login",
     data: user,
   });
 
@@ -36,7 +36,7 @@ export const logout = () =>
 
   axios({
     method: "post",
-    url: "/users/logout",
+    url: "api/users/logout",
   });
   // fetch("users/logout", {
   //   method: "POST",
