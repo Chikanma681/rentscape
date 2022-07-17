@@ -1,13 +1,13 @@
-import Login from "./src/components/Login";
-import Signup from "./src/components/Signup";
-import Logout from "./src/components/Logout";
-import HomePage from "./src/components/Homepage";
-import Header from "./src/components/Header";
+import Login from "./components/Login";
+import Signup from "./components/Signup";
+import Logout from "./components/Logout";
+import HomePage from "./components/Homepage";
+import Header from "./components/Header";
 import { Provider } from "react-redux";
-import store, { Persistor } from "./src/redux/store";
+import store, { Persistor } from "./redux/store";
 import ProtectedRoutes from "./util/ProtectedRoute";
 import { Routes, Route, Navigate } from "react-router-dom";
-import PostComponent from "./src/components/PostComponent";
+import PostComponent from "./components/PostComponent";
 import { PersistGate } from "redux-persist/integration/react";
 
 function App() {
