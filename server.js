@@ -13,7 +13,7 @@ const MongoDBSession = require("connect-mongodb-session")(session); // alternati
 // we use bodyparser in the routes folder
 
 app.use(morgan("dev"));
-const db = require("./config/keys").mongoURI;
+const db = process.env.MONGO_URI;
 app.use(cookieParser());
 
 //Connect to MongoDB
