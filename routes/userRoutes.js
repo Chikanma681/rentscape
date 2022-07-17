@@ -3,7 +3,7 @@ const bodyParser = require("body-parser");
 const bcrypt = require("bcryptjs");
 const User = require("../models/user");
 const router = express.Router();
-router.use(bodyParser.json());
+router.use(express.json());
 
 // const isAuth = (req, res, next) => {
 //     if (req.session.isAuth) {
