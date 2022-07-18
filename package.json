@@ -1,6 +1,10 @@
 {
   "name": "tentant-app",
   "version": "1.0.0",
+  "engines": {
+    "node": "14.x",
+    "npm": "6.14.x"
+  },
   "description": "Tentant Web Application",
   "main": "index.js",
   "scripts": {
@@ -9,7 +13,8 @@
     "start": "node server.js",
     "client": "cd client && yarn start",
     "server": "nodemon server.js",
-    "dev": "concurrently \"npm run server\" \"npm run client\""
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "heroku-postbuild": "cd client && npm install && npm run build"
   },
   "author": "Chikanma Onuegbu",
   "license": "MIT",

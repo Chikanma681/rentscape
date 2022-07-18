@@ -40,14 +40,13 @@ const HomePage = () => {
     handleFilter();
   };
   const handleFilter = () => {
-    // console.log(apartments)
     const results = apartments.filter((apartment) =>
       apartment.address.toLowerCase().includes(filtered.toLowerCase())
     );
     console.log(results);
     setOutput(results);
   };
-  // console.log(output)
+
   if (filtered === "") {
     return (
       <div>
@@ -84,7 +83,7 @@ const HomePage = () => {
                           href={
                             "mailto:" +
                             apartment.email +
-                            "?subject=The%20subject%20of%20the%20mail"
+                            "?subject=Interested%20in%20renting%20your%20apartment"
                           }
                         >
                           Contact Landlord

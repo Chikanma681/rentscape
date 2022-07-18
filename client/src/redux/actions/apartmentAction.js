@@ -2,11 +2,11 @@ import { ApartmentTypes } from "../types/apartment";
 import axios from "axios";
 const { GET_ITEM, ADD_ITEM, DELETE_ITEM } = ApartmentTypes;
 
-axios.defaults.baseURL = "http://localhost:5000/";
+axios.defaults.baseURL = "https://rentscape.herokuapp.com/";
 axios.defaults.withCredentials = true;
 
 export const getItem = async (dispatch) => {
-  const response = await axios.get("/");
+  const response = await axios.get("api/");
 
   if (response.status === 200) {
     return dispatch({
@@ -20,7 +20,7 @@ export const getItem = async (dispatch) => {
 
 export const getItemId = (id) => (dispatch) => {
   axios
-    .get(`/${id}`)
+    .get(`api/${id}`)
     .then((res) => {
       dispatch({
         type: GET_ITEM,
@@ -32,7 +32,7 @@ export const getItemId = (id) => (dispatch) => {
 
 export const addItem = (data) => async (dispatch) => {
   const response = await axios
-    .post("/", data)
+    .post("api/", data)
     .then((res) =>
       dispatch({
         type: ADD_ITEM,
@@ -45,7 +45,7 @@ export const addItem = (data) => async (dispatch) => {
 
 export const deleteItem = (id) => (dispatch) => {
   axios
-    .delete(`/${id}`)
+    .delete(`api/${id}`)
     .then((res) =>
       dispatch({
         type: DELETE_ITEM,
