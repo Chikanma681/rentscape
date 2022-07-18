@@ -51,8 +51,8 @@ app.use(
 );
 
 const isAuth = (req, res, next) => {
-  console.log("Auth", req.sessionID);
   if (req.session.isAuth) {
+    res.send("app is running")
     next();
   } else {
     console.log("Login required");
