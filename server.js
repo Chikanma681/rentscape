@@ -18,7 +18,7 @@ app.use(cookieParser());
 
 //Connect to MongoDB
 const corsOptions = {
-  origin: "http://localhost:3000",
+  origin: "https://rentscape.herokuapp.com/",
   credentials: true, //access-control-allow-credentials:true
   optionSuccessStatus: 200,
 };
