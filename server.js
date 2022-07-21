@@ -17,12 +17,8 @@ const db = require("./config/keys").mongoURI;
 app.use(cookieParser());
 
 //Connect to MongoDB
-const corsOptions = {
-  origin: "*",
-  credentials: true, //access-control-allow-credentials:true
-  optionSuccessStatus: 200,
-};
-app.use(cors(corsOptions));
+
+app.use(cors());
 const connect = mongoose.connect(db);
 
 connect
