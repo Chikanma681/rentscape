@@ -61,7 +61,7 @@ const isAuth = (req, res, next) => {
 app.use("/api/users", userRouter);
 app.use(isAuth);
 // app.use(express.urlencoded());
-app.use("/api/", apartmentsRouter);
+app.use("/api", apartmentsRouter);
 
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
