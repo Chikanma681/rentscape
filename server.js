@@ -56,6 +56,7 @@ const isAuth = (req, res, next) => {
     next();
   } else {
     console.log("Login required");
+    next();
   }
 };
 app.use("/api/users", userRouter);
