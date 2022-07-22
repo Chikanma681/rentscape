@@ -17,8 +17,12 @@ const db = require("./config/keys").mongoURI;
 app.use(cookieParser());
 
 //Connect to MongoDB
-
-app.use(cors());
+const corsOptions = {
+  origin: "https://chikanma681.github.io",
+  credentials: true, //access-control-allow-credentials:true
+  optionSuccessStatus: 200,
+};
+app.use(cors(corsOptions));
 const connect = mongoose.connect(db);
 
 connect
