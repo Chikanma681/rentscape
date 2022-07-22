@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/rentscape/static/css/main.c25aa6b5.css",
-    "main.js": "/rentscape/static/js/main.2e35e3b8.js",
+    "main.js": "/rentscape/static/js/main.efda9964.js",
     "index.html": "/rentscape/index.html",
     "main.c25aa6b5.css.map": "/rentscape/static/css/main.c25aa6b5.css.map",
-    "main.2e35e3b8.js.map": "/rentscape/static/js/main.2e35e3b8.js.map"
+    "main.efda9964.js.map": "/rentscape/static/js/main.efda9964.js.map"
   },
   "entrypoints": [
     "static/css/main.c25aa6b5.css",
-    "static/js/main.2e35e3b8.js"
+    "static/js/main.efda9964.js"
   ]
 }
