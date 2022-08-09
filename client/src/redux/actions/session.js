@@ -1,6 +1,7 @@
 import * as apiUtil from "../../util/session";
-import { receiveErrors } from "./error";
 import UserAction from "../types/user";
+import { receiveErrors } from "./error";
+
 const { RECEIVE_CURRENT_USER, LOGOUT_USER } = UserAction;
 
 const receiveCurrentUser = (user) => ({
@@ -18,7 +19,7 @@ export const login = (user) => async (dispatch) => {
   const data = await response.data;
   console.log(response);
 
-  if (response.status === 200) {
+  if (response.status===200) {
     return dispatch(receiveCurrentUser(data));
   }
   return dispatch(receiveErrors(data));
@@ -34,12 +35,11 @@ export const signup = (user) => async (dispatch) => {
   return dispatch(receiveErrors(data));
 };
 
-export const logout = () => async (dispatch) => {
+export const logout = (user) => async (dispatch) => {
   const response = await apiUtil.logout();
   const data = await response.json();
 
   if (response.ok) {
-    console.log(data);
     return dispatch(logoutCurrentUser());
   }
   return dispatch(receiveErrors(data));

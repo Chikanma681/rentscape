@@ -64,7 +64,7 @@ router.post("/login", (req, res, next) => {
       if (isMatch) {
         req.session.isAuth = true;
         req.session.userId = user._id;
-        console.log("Bcrpt", req.sessionID);
+        console.log("Bcrpt",req.sessionID);
         res.json({ status: "Login Successful", user: user.username });
       } else {
         var err = new Error("Your password is incorrect!");
@@ -79,7 +79,7 @@ router.post("/logout", (req, res, next) => {
   if (req.session) {
     req.session.destroy();
     res.clearCookie("session-id");
-    console.log("Logout Success");
+    res.redirect("/");
   } else {
     var err = new Error("You are not logged in!");
     err.status = 403;
