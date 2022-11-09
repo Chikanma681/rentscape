@@ -18,7 +18,7 @@ app.use(cookieParser());
 
 //Connect to MongoDB
 const corsOptions = {
-  origin: "https://chikanma681.github.io",
+  origin: "http://www.localhost:5000",
   credentials: true, //access-control-allow-credentials:true
   optionSuccessStatus: 200,
 };
