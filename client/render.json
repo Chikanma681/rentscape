@@ -1,0 +1,10 @@
+{
+    "routes": [
+        {
+            "path": "**",
+            "headers": [
+                { "key": "Content-Type", "value": "application/javascript" }
+            ]
+        }
+    ]
+}

@@ -2,7 +2,7 @@ import { ApartmentTypes } from "../types/apartment";
 import axios from "axios";
 const { GET_ITEM, ADD_ITEM, DELETE_ITEM } = ApartmentTypes;
 
-axios.defaults.baseURL = "https://rentscape.herokuapp.com/";
+axios.defaults.baseURL = "https://rentscape.onrender.com/";
 axios.defaults.withCredentials = true;
 
 export const getItem = async (dispatch) => {
