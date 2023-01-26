@@ -32,10 +32,6 @@ export const login = (user) =>
   // });
 
 
-<<<<<<< HEAD
-
-=======
->>>>>>> parent of 0b68304 (alhamdulillah)
 export const logout = (user) =>
   fetch("users/logout", {
     method: "POST",
