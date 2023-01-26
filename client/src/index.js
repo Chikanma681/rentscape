@@ -9,7 +9,7 @@ import { BrowserRouter as Router } from "react-router-dom";
 // components takes precedence over default styles.
 
 
-if (process.env.NODE_ENV === 'production') disableReactDevTools();
+// if (process.env.NODE_ENV === 'production') disableReactDevTools();
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <Router>
